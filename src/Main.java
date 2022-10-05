@@ -39,7 +39,6 @@ public class Main {
         SortedNames.add("Robert");
         SortedNames.add("Ulla");
 
-
         indexOfElements = SearchMethods.JumpSearch(sortedIntArray, 11);
         if (indexOfElements != null){
             System.out.println("Jump Search (array): we found index " + indexOfElements + " and we retrieved " + sortedIntArray[indexOfElements]);

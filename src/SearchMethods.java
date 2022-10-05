@@ -27,14 +27,16 @@ class SearchMethods {
         int squareRootOfListLength = (int) Math.sqrt(list.length);
         // create an integer for the last position jumped to
         int previousPosition = 0;
+        // reassign the value of squareRootOfListLength to j, so we can change it but keep squareRoot intact.
+        int j = squareRootOfListLength;
 
         // I have no clue what the fuck is going on here - apparently it's a jumpsearch
-        while (list[Math.min(squareRootOfListLength - 1, list.length - 1)].compareTo(object) < 0){
+        while (list[Math.min(j - 1, list.length - 1)].compareTo(object) < 0){
             // set the current position to the previous position
             previousPosition = squareRootOfListLength;
 
             // basically do square root + square root
-            squareRootOfListLength = squareRootOfListLength + (int) Math.sqrt(list.length);
+            j = j + squareRootOfListLength;
 
             // to avoid throwing an exception and ending the program, just return null if previousPosition is equal to
             // or longer than the length of the list.
@@ -49,7 +51,7 @@ class SearchMethods {
         while (list[previousPosition].compareTo(object) < 0){
             previousPosition++;
 
-            if (previousPosition == squareRootOfListLength || previousPosition == list.length){
+            if (previousPosition == j || previousPosition == list.length){
                 // return null is used, because of the if-statement in our Main.java at line 23 and 29.
                 // System.out.println("JUMPSEARCH ARRAY (Checkpoint 2, line 54)");
                 return null;
@@ -73,13 +75,15 @@ class SearchMethods {
         // create an integer for the last position jumped to
         int previousPosition = 0;
 
+        int j = squareRootOfListLength;
+
         // I have no clue what the fuck is going on here - apparently it's a jumpsearch
-        while (list.get(Math.min(squareRootOfListLength - 1, list.size() - 1)).compareTo(object) < 0){
+        while (list.get(Math.min(j - 1, list.size() - 1)).compareTo(object) < 0){
             // set the current position to the previous position
             previousPosition = squareRootOfListLength;
 
             // basically do square root + square root
-            squareRootOfListLength = squareRootOfListLength + (int) Math.sqrt(list.size());
+            j = j + squareRootOfListLength;
 
             // to avoid throwing an exception and ending the program, just return null if previousPosition is equal to
             // or longer than the length of the list.
@@ -94,7 +98,7 @@ class SearchMethods {
         while (list.get(previousPosition).compareTo(object) < 0){
             previousPosition++;
 
-            if (previousPosition == squareRootOfListLength || previousPosition == list.size()){
+            if (previousPosition == j || previousPosition == list.size()){
                 // return null is used, because of the if-statement in our Main.java at line 23 and 29.
                 // System.out.println("JUMPSEARCH LIST (Checkpoint 6, line 99)");
                 return null;
